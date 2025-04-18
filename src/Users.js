@@ -2,7 +2,7 @@ import { Box } from "@mui/material";
 import UserForm from "./UserForm";
 import UsersTable from "./UsersTable";
 
-const users = [
+const users = [      //this is normal verible which is used to store the data of the users
   {
     id: 1,
     name: "Ravindu",

@@ -4,7 +4,7 @@ import { useState } from "react";
 
 const UserForm = (props) => {
 
-    const [id, setId] = useState(0); //state to store the id of the user
+    const [id, setId] = useState(0); //state to store the id of the user, this is state varible which is used to store the value of the input field
     const [name, setName] =useState(''); //state to store the name of the user
 
     return (
@@ -77,8 +77,8 @@ const UserForm = (props) => {
                     marginBottom: '20px',
                     backgroundColor: '#00c6e6',
                     color: '#000000',
-                    margintop: '20px',
-                    marginLeft: '',
+                    marginLeft: '0px',
+                    marginTop: '30px',
                     '&:hover': {
                         opacity: 0.7,
                         backgroundColor: '#00c6e6',
