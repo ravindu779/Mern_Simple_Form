@@ -1,6 +1,6 @@
 import { Paper, TableContainer, Table, TableRow, TableHead, TableCell, TableBody, Button } from "@mui/material";
 
-const UsersTable = ({rows}) => {         //this paper component helps to create a paper like effect on the table
+const UsersTable = ({rows, selectedUser, deleteUser}) => {         //this paper component helps to create a paper like effect on the table
     return (
         <TableContainer component={Paper}>
         <Table>
@@ -20,14 +20,14 @@ const UsersTable = ({rows}) => {         //this paper component helps to create 
                         <TableCell>
                             <Button 
                                 sx={{ margin: '0px 10px',}}
-                                onClick={() => {}}     //this is used to get the value of the input field and set it to the state}    
+                                onClick={() => selectedUser({id: row.id, name: row.name})}      
                             >
                                 Update
                             </Button>
 
                             <Button 
                                 sx={{ margin: '0px 10px',}}
-                                onClick={() => {}}     //this is used to get the value of the input field and set it to the state}    
+                                onClick={() => deleteUser({ id: row.id})} 
                             >
                                 Delete
                             </Button>

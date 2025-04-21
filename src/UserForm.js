@@ -1,11 +1,25 @@
 import { Button, Grid, Input, Typography } from "@mui/material";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 
-const UserForm = (props) => {
+const UserForm = ({ addUser, updateUser, submitted, data, isEdit }) => {
 
     const [id, setId] = useState(0); //state to store the id of the user, this is state varible which is used to store the value of the input field
     const [name, setName] =useState(''); //state to store the name of the user
+
+    useEffect(() => {
+        if (!submitted) {
+            setId(0); //if the form is not submitted then set the id to 0
+            setName(''); //if the form is not submitted then set the name to empty string
+        }
+    }, [submitted]); //this useEffect hook is used to call the function when the component is mounted
+
+    useEffect(() => {
+        if (data?.id && data.id !== 0) {    //it there are have data and id is not 0 then set the id and name to the data
+            setId(data.id);
+            setName(data.name);
+        }
+    }, [data]); //this useEffect hook is used to call the function when the component is mounted
 
     return (
        <Grid 
@@ -15,6 +29,7 @@ const UserForm = (props) => {
                 backgroundColor: "#ffffff",
                 marginBottom: "30px",
                 display: "block",
+               
             }}
         >
             <Grid item xs={12}>   
@@ -84,8 +99,11 @@ const UserForm = (props) => {
                         backgroundColor: '#00c6e6',
                     }
                 }}
+                onClick={() => isEdit ? updateUser({id, name}) : addUser({id, name})}
                 >
-                    Add
+                    {
+                        isEdit ? 'Update' : 'Add' //if the isEdit is true then show the update button else show the add button
+                    }
             </Button>
 
         </Grid>
